@@ -114,7 +114,9 @@ ContaPoupanca --> Conta
 <br />
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/1ec84d12-76bc-4bb2-ab0c-c6a2f119c879" alt="Captura de tela" width="400" />
+  <a href="https://github.com/user-attachments/assets/eb80b225-c420-49be-88b4-7e9827c24d7f">
+    <img src="https://github.com/user-attachments/assets/eb80b225-c420-49be-88b4-7e9827c24d7f" alt="Imagem centralizada" />
+  </a>
 </p>
 
 <br />
