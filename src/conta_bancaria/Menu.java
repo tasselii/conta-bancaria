@@ -37,11 +37,11 @@ public class Menu {
 				cc1.depositar(500);
 				cc1.visualizar();
 				
-				ContaPoupanca cp1 = new ContaPoupanca(3, 678, 2, "Ana", 500, 300);
+				ContaPoupanca cp1 = new ContaPoupanca(3, 678, 2, "Ana", 1000, 20);
 				
 				// Sacando e Visualizando na Conta Poupança
 				cp1.visualizar();
-				cp1.sacar(1000);
+				cp1.sacar(500);
 				cp1.visualizar();
 				
 				// Sacando e Visualizando na Conta Poupança

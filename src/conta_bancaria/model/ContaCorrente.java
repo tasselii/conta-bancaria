@@ -43,6 +43,8 @@ public class ContaCorrente extends Conta {
 		NumberFormat nfMoeda = NumberFormat.getCurrencyInstance();
 		
 		super.visualizar();
-		System.out.println("Limite da conta " + nfMoeda.format(this.limite));
+		System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND + "╔══════════════════════════════════════╗");
+        System.out.println(Cores.TEXT_CYAN + "║" + Cores.TEXT_RED + "      Limite da conta " + nfMoeda.format(this.limite) + Cores.TEXT_CYAN + "       ║");
+        System.out.println("╚══════════════════════════════════════╝");
 	}
 }

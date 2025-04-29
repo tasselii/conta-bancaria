@@ -121,7 +121,6 @@ public class Conta {
 		System.out.println("║" + Cores.TEXT_WHITE + " Titular:         " + Cores.TEXT_YELLOW + String.format("%-20s", this.titular)  + Cores.TEXT_CYAN + "║");
 		System.out.println("║" + Cores.TEXT_WHITE + " Saldo:           " + Cores.TEXT_YELLOW + String.format("%-20s", nfMoeda.format(this.saldo)) + Cores.TEXT_CYAN + "║");
 		System.out.println("╚══════════════════════════════════════╝" + Cores.TEXT_RESET);
-
 		
 	}
 }
