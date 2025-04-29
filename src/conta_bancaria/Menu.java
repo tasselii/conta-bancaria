@@ -3,6 +3,8 @@ package conta_bancaria;
 import java.util.Scanner;
 
 import conta_bancaria.model.Conta;
+import conta_bancaria.model.ContaCorrente;
+import conta_bancaria.model.ContaPoupanca;
 import conta_bancaria.util.Cores;
 
 public class Menu {
@@ -18,12 +20,35 @@ public class Menu {
 				c1.visualizar();
 				
 				// Sacar
-				c1.sacar(1001);
+				c1.sacar(100);
 				c1.visualizar();
 				
+				// Instanciando a propriedade titular
+				ContaCorrente cc1 = new ContaCorrente(2, 456, 1, "Renata Negrini", 600, 600);
+				
+				// Instaciando um Objeto da Classe Conta Corrente
+				cc1.visualizar();
+				
+				// Sacando e Visualizando na Conta Corrente
+				cc1.sacar(500);
+				cc1.visualizar();
+				
+				// Depositando e Visualizando na Conta Corrente
+				cc1.depositar(500);
+				cc1.visualizar();
+				
+				ContaPoupanca cp1 = new ContaPoupanca(3, 678, 2, "Ana", 500, 300);
+				
+				// Sacando e Visualizando na Conta Poupança
+				cp1.visualizar();
+				cp1.sacar(1000);
+				cp1.visualizar();
+				
+				// Sacando e Visualizando na Conta Poupança
+				cp1.depositar(100);
+				cp1.visualizar();
 				
 				while(true) {
-
 					System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND);
 					System.out.println("╔══════════════════════════════════════╗");
 					System.out.println("║" + Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND + "         ███  " + Cores.TEXT_WHITE + "🏦 BANCO Z " + Cores.TEXT_CYAN + " ███         " + Cores.TEXT_CYAN + "║");
