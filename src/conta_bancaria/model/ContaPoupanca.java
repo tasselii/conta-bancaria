@@ -19,11 +19,25 @@ public class ContaPoupanca extends Conta {
 		this.aniversario = diaAniversario;
 	}
 	
-	@Override
-	public void visualizar() {
-		super.visualizar();
-		System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND + "╔══════════════════════════════════════╗");
-        System.out.println(Cores.TEXT_CYAN + "║" + Cores.TEXT_YELLOW + "       Aniversário da conta: " + this.aniversario + Cores.TEXT_CYAN + "       ║");
-        System.out.println("╚══════════════════════════════════════╝");
+	protected String linhaLimiteCP() {
+	    // Definindo o texto da linha do aniversário
+	    String label = " Aniv. da conta:  ";
+	    
+	    // Convertendo o aniversário para string
+	    String aniversarioStr = String.valueOf(this.aniversario);
+	    
+	    // Total de caracteres da linha (incluindo bordas)
+	    int larguraTotal = 40; // Total de largura da linha
+	    int larguraConteudo = label.length() + aniversarioStr.length(); // Largura do conteúdo
+	    int espacosDireita = larguraTotal - 2 - larguraConteudo; // Espaços à direita para preencher a linha
+
+	    // Montando a linha
+	    String linha = Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND + "║" + // Borda esquerda
+	                   Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_WHITE + label + // Texto do aniversário
+	                   Cores.TEXT_YELLOW + aniversarioStr + // Aniversário formatado
+	                   Cores.ANSI_BLACK_BACKGROUND + " ".repeat(espacosDireita) + // Espaços à direita
+	                   Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND + "║"; // Borda direita
+
+	    return linha;
 	}
 }

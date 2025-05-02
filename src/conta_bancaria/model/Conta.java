@@ -97,30 +97,54 @@ public abstract class Conta {
 		this.saldo += valor; 
 	}
 	
-	// Método para visualizar os dados da conta
+	protected String linhaLimite() {
+	    return "";
+	}
+	
+	protected String linhaLimiteCP() {
+	    return "";
+	}
+
 	public void visualizar() {
-		
-		NumberFormat nfMoeda = NumberFormat.getCurrencyInstance();
-		
-		String tipo = "";
-		
-		switch(this.tipo) {
-			case 1 -> tipo = "Conta Corrente";
-			case 2 -> tipo = "Conta Poupança";
-			default -> tipo = "Inválido";
-				
-		}
-		
-		System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND);
-		System.out.println("╔══════════════════════════════════════╗");
-		System.out.println("║          📋 " + Cores.TEXT_WHITE + "DADOS DA CONTA" + Cores.TEXT_CYAN + "           ║");
-		System.out.println("╠══════════════════════════════════════╣");
-		System.out.println("║" + Cores.TEXT_WHITE + " Número da Conta: " + Cores.TEXT_YELLOW + String.format("%-20s", this.numero)  + Cores.TEXT_CYAN + "║");
-		System.out.println("║" + Cores.TEXT_WHITE + " Agência:         " + Cores.TEXT_YELLOW + String.format("%-20s", this.agencia) + Cores.TEXT_CYAN + "║");
-		System.out.println("║" + Cores.TEXT_WHITE + " Tipo de Conta:   " + Cores.TEXT_YELLOW + String.format("%-20s", this.tipo)    + Cores.TEXT_CYAN + "║");
-		System.out.println("║" + Cores.TEXT_WHITE + " Titular:         " + Cores.TEXT_YELLOW + String.format("%-20s", this.titular)  + Cores.TEXT_CYAN + "║");
-		System.out.println("║" + Cores.TEXT_WHITE + " Saldo:           " + Cores.TEXT_YELLOW + String.format("%-20s", nfMoeda.format(this.saldo)) + Cores.TEXT_CYAN + "║");
-		System.out.println("╚══════════════════════════════════════╝" + Cores.TEXT_RESET);
-		
+	    NumberFormat nfMoeda = NumberFormat.getCurrencyInstance();
+
+	    String tipoStr = switch (this.tipo) {
+	        case 1 -> "Conta Corrente";
+	        case 2 -> "Conta Poupança";
+	        default -> "Inválido";
+	    };
+
+	    String saldoFormatado = null;
+
+	    if (saldo > 0) 
+	        saldoFormatado = Cores.TEXT_GREEN + nfMoeda.format(this.saldo);
+	    else if (saldo < 0)
+	        saldoFormatado = Cores.TEXT_RED + nfMoeda.format(this.saldo);
+	    else
+	        saldoFormatado = nfMoeda.format(this.saldo); // Para saldo zero
+
+	    System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND);
+	    System.out.println("╔══════════════════════════════════════╗");
+	    System.out.println("║          📋 " + Cores.TEXT_WHITE + "DADOS DA CONTA" + Cores.TEXT_CYAN + "           ║");
+	    System.out.println("╠══════════════════════════════════════╣");
+	    System.out.println("║" + Cores.TEXT_WHITE + " Número da Conta: " + Cores.TEXT_YELLOW + String.format("%-20s", this.numero)  + Cores.TEXT_CYAN + "║");
+	    System.out.println("║" + Cores.TEXT_WHITE + " Agência:         " + Cores.TEXT_YELLOW + String.format("%-20s", this.agencia) + Cores.TEXT_CYAN + "║");
+	    System.out.println("║" + Cores.TEXT_WHITE + " Tipo de Conta:   " + Cores.TEXT_YELLOW + String.format("%-20s", tipoStr)    + Cores.TEXT_CYAN + "║");
+	    System.out.println("║" + Cores.TEXT_WHITE + " Titular:         " + Cores.TEXT_YELLOW + String.format("%-20s", this.titular)  + Cores.TEXT_CYAN + "║");
+	    System.out.println("║" + Cores.TEXT_WHITE + " Saldo:           " + Cores.TEXT_YELLOW + String.format("%-25s", saldoFormatado) + Cores.TEXT_CYAN + "║");
+
+	    // Inclui a linha do limite se houver (para conta corrente)
+	    String limiteLinha = linhaLimite();
+	    String limiteLinhaCP = linhaLimiteCP();
+	    
+	    if (!limiteLinha.isEmpty()) {
+	        System.out.println(limiteLinha);
+	    } 
+	    
+	    if (!limiteLinhaCP.isEmpty()) {
+	        System.out.println(limiteLinhaCP);
+	    }
+	    
+	    System.out.println("╚══════════════════════════════════════╝" + Cores.TEXT_RESET);
 	}
 }
