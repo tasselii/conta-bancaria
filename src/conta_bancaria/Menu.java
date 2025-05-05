@@ -18,9 +18,9 @@ public class Menu {
 				
 		        ContaController contas = new ContaController();
 		        
-				int opcao, numero, agencia, tipo, aniversario;
+				int opcao, numero, agencia, tipo, aniversario, numeroDestino;
 				String titular;
-				float saldo, limite;
+				float saldo, limite, valor;
 				
 				// Dados para teste
 				
@@ -80,17 +80,18 @@ public class Menu {
 					
 							keyPress();
 							break;
-					case 2: System.out.println(Cores.TEXT_WHITE + "Listar todas as Contas\n\n"); 
-							contas.listarTodas();
+							
+					case 2: contas.listarTodas();
 							keyPress();
 							break;
-					case 3: System.out.println(Cores.TEXT_WHITE + "Consultar dados da Conta - por número\n\n"); 
-							System.out.println("Digite o número da conta: ");
+							
+					case 3:	System.out.println("Digite o número da conta: ");
 							numero = scan.nextInt();
 					
 							contas.procurarPorNumero(numero);
 			 				keyPress();
 							break;
+							
 					case 4: contas.listarTodas();
 							
 							System.out.println("Digite o número da conta: ");
@@ -137,7 +138,8 @@ public class Menu {
 							keyPress();
 							break;
 							
-					case 5:	contas.listarTodas();
+					case 5:	
+						contas.listarTodas();
 							System.out.println(Cores.TEXT_WHITE + "Consultar dados da Conta - por número\n\n"); 
 							System.out.println("Digite o número da conta: ");
 							numero = scan.nextInt();
@@ -145,15 +147,39 @@ public class Menu {
 							contas.deletar(numero);
 							keyPress();
 							break;
-					case 6: System.out.println(Cores.TEXT_WHITE + "Saque\n\n"); 
+					case 6: 
+						System.out.println("Digite o número da conta: ");
+							numero = scan.nextInt();
+						
+							System.out.println("Digite o valor do saque: ");
+							valor = scan.nextFloat();
+							
+							contas.sacar(numero, valor);
 							keyPress();
 							break;
-					case 7: System.out.println(Cores.TEXT_WHITE + "Depósito\n\n"); 
+					case 7: 
+						System.out.println("Digite o número da conta: ");
+						numero = scan.nextInt();
+						
+						System.out.println("Digite o valor do depósito: ");
+						valor = scan.nextFloat();
+						
+						contas.depositar(numero, valor); 
 							keyPress();
 							break;
-					case 8: System.out.println(Cores.TEXT_WHITE + "Transferência entre Contas\n\n"); 
-							keyPress();
-							break;
+					case 8:  
+						System.out.println("Digite o número da conta de origem: ");
+						numero = scan.nextInt();
+						
+						System.out.println("Digite o número da conta de destino: ");
+						numeroDestino = scan.nextInt();
+						
+						System.out.println("Digite o valor do depósito: ");
+						valor = scan.nextFloat();
+						
+						contas.transferir(numero,numeroDestino, valor); 
+						keyPress();
+						break;
 					default: System.out.println(Cores.TEXT_RED_BOLD + "\nOpção Inválida!\n" + Cores.TEXT_RESET);
 					}
 				}
