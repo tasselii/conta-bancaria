@@ -3,7 +3,8 @@ package conta_bancaria.controller;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Optional;
-
+import java.util.stream.Collectors;
+import java.util.List;
 import conta_bancaria.model.Conta;
 import conta_bancaria.repository.ContaRepository;
 
@@ -27,9 +28,20 @@ public class ContaController implements ContaRepository{
 
 	@Override
 	public void listarTodas() {
-		for (var conta : listaContas) {
-			conta.visualizar();
-		}
+		listaContas.forEach(Conta::visualizar);
+	}
+	
+	@Override
+	public void listarPorTitular(String titular) {
+	
+		List<Conta> listaTitulares = listaContas.stream()
+				.filter(c -> c.getTitular().toUpperCase().contains(titular.toUpperCase()))
+				.collect(Collectors.toList());
+
+				if(listaTitulares.isEmpty())
+				System.out.printf("\nNenhuma conta foi encontrada com base no critério: %s", titular);
+
+				listaTitulares.forEach(c -> c.visualizar());
 	}
 
 	@Override
@@ -63,7 +75,7 @@ public class ContaController implements ContaRepository{
 		}else
 				System.out.printf("\nA Conta %d não foi encontrado", numero);
 	}
-		
+	
 
 	@Override
 	public void sacar(int numero, float valor) {
@@ -72,18 +84,16 @@ public class ContaController implements ContaRepository{
 		
 		Optional<Conta> conta = buscarNaCollection(numero);
 		
-		if(conta.isPresent())
+		if(conta.isPresent()) {
 			if(conta.get().sacar(valor) == true) {
 				System.out.printf("\nO Saque no valor de %s, foi efetuado com sucesso na conta número %d",nfMoeda.format(valor), numero);
-			 
-		}else
+			}
+		}else 
 			System.out.printf("\nA Conta %d não foi encontrado", numero);
-		
 	}
 
 	@Override
 	public void depositar(int numero, float valor) {
-		NumberFormat nfMoeda = NumberFormat.getCurrencyInstance();
 		
 		Optional<Conta> conta = buscarNaCollection(numero);
 		
@@ -122,4 +132,6 @@ public class ContaController implements ContaRepository{
 		}
 		return Optional.empty();
 	}
+
+
 }

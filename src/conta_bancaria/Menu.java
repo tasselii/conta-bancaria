@@ -3,7 +3,6 @@ package conta_bancaria;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.Scanner;
-
 import conta_bancaria.controller.ContaController;
 import conta_bancaria.model.Conta;
 import conta_bancaria.model.ContaCorrente;
@@ -39,14 +38,13 @@ public class Menu {
 
 					opcao = scan.nextInt();
 						
-					if (opcao == 9) {
+					if (opcao == 0) {
 						System.out.println(Cores.TEXT_WHITE_BOLD + Cores.ANSI_BLACK_BACKGROUND + "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
 						sobre();
 						scan.close();
 						System.exit(0);
 					}
 					
-						
 					switch (opcao) {
 					case 1: System.out.println(Cores.TEXT_WHITE + "Criar Conta\n\n"); 
 							
@@ -139,8 +137,7 @@ public class Menu {
 							break;
 							
 					case 5:	
-						contas.listarTodas();
-							System.out.println(Cores.TEXT_WHITE + "Consultar dados da Conta - por número\n\n"); 
+							contas.listarTodas();
 							System.out.println("Digite o número da conta: ");
 							numero = scan.nextInt();
 					
@@ -178,6 +175,15 @@ public class Menu {
 						valor = scan.nextFloat();
 						
 						contas.transferir(numero,numeroDestino, valor); 
+						keyPress();
+						break;
+					case 9:
+						System.out.print("Digite o nome do titular: ");
+						scan.nextLine();
+						titular = scan.nextLine();
+						
+						contas.listarPorTitular(titular);
+						
 						keyPress();
 						break;
 					default: System.out.println(Cores.TEXT_RED_BOLD + "\nOpção Inválida!\n" + Cores.TEXT_RESET);
@@ -224,7 +230,8 @@ public class Menu {
 		System.out.println("║" + Cores.TEXT_WHITE + Cores.ANSI_BLACK_BACKGROUND + " 6 - Sacar                            " + Cores.TEXT_CYAN + "║");
 		System.out.println("║" + Cores.TEXT_WHITE + Cores.ANSI_BLACK_BACKGROUND + " 7 - Depositar                        " + Cores.TEXT_CYAN + "║");
 		System.out.println("║" + Cores.TEXT_WHITE + Cores.ANSI_BLACK_BACKGROUND + " 8 - Transferir                       " + Cores.TEXT_CYAN + "║");
-		System.out.println("║" + Cores.TEXT_WHITE + Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_YELLOW +" 9 - Sair                             " + Cores.TEXT_CYAN + "║");
+		System.out.println("║" + Cores.TEXT_WHITE + Cores.ANSI_BLACK_BACKGROUND + " 9 - Listar conta por titular         " + Cores.TEXT_CYAN + "║");
+		System.out.println("║" + Cores.TEXT_WHITE + Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_YELLOW +" 0 - Sair                             " + Cores.TEXT_CYAN + "║");
 		System.out.println("╚══════════════════════════════════════╝" + Cores.TEXT_RESET);
 	}
 }
