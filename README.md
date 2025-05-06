@@ -181,6 +181,5 @@ Este repositório é parte de um projeto educacional, mas contribuições são s
 
 Desenvolvido por [**Thiago Tasseli**](https://github.com/tasselii)
 Para dúvidas, sugestões ou colaborações, entre em contato via GitHub ou abra uma issue!
-# Projeto Conta Bancária - Java
 
 <br />
