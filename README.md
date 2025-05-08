@@ -1,10 +1,12 @@
-# Projeto Conta Bancária - Java
+
+# 💳 Projeto Conta Bancária - Java
 
 <br />
 
 <div align="center">
 	<img src="https://i.imgur.com/IaD4lwg.png" title="source: imgur.com" width="35%"/>
 </div>
+
 <br />
 
 <div align="center">
@@ -16,57 +18,38 @@
   <img src="https://img.shields.io/github/issues-pr/rafaelq80/aulas_java_t82?style=flat-square" />
 </div>
 
-------
+---
 
-<br />
+## 📌 Descrição
 
-## 1. Descrição
+O **Projeto Conta Bancária** é um sistema de gestão bancária criado em **Java**, com foco total no aprendizado de **Programação Orientada a Objetos (POO)** 💡. Ele permite:
 
-<br />
+- 📥 Criar, consultar, editar e excluir contas;
+- 💰 Realizar saques, depósitos e transferências;
+- 👤 Gerenciar dados de contas correntes e poupanças.
 
+Tudo foi desenvolvido aplicando os conceitos aprendidos nas aulas de:
 
-O **Projeto Conta Bancária** é um sistema de gestão projetado para simular e administrar operações financeiras relacionadas a contas bancárias. Oferece funcionalidades como **cadastro**, **consulta**, **atualização** e **remoção** de contas, além de transações como depósitos, saques e transferências.
+📚 `variáveis`, `métodos`, `condições`, `loops`, `arrays`, `collections`, `exceptions`, `interfaces`, `lambdas`, `stream`, e muito mais!
 
-O sistema organiza as informações dos clientes — incluindo nome do titular, número da conta, saldo e tipo de conta — garantindo a realização segura das operações. Seu principal objetivo é automatizar e simplificar o gerenciamento de contas bancárias, como Conta Corrente e Conta Poupança, promovendo agilidade e precisão no controle financeiro.
+---
 
-Este projeto, desenvolvido em **Java**, foca no estudo e aplicação dos conceitos de **Programação Orientada a Objetos (POO)**, incluindo:
+## 🚀 Funcionalidades
 
-- Classes e Objetos;
-- Atributos e Métodos;
-- Modificadores de Acesso;
-- Herança e Polimorfismo;
-- Classes Abstratas;
-- Interfaces.
+1. 🆕 Criar Conta
+2. 📋 Listar Contas
+3. 🔍 Consultar Conta por Número ou Titular
+4. ✏️ Editar Conta
+5. ❌ Excluir Conta
+6. 💸 Sacar
+7. ➕ Depositar
+8. 🔁 Transferir
 
-Além de servir como um simulador funcional, o projeto oferece uma base prática para compreender os princípios fundamentais da POO aplicados a um cenário realista.
+---
 
-<br />
+## 📐 Diagrama de Classes
 
-## 2. Funcionalidades do Projeto
-
-<br />
-
-1. **Criar Conta:** Cria uma nova conta bancária especificando nome do titular, número da agência, saldo inicial e propriedades específicas conforme o tipo da conta. O número da conta é gerado automaticamente.
-2. **Listar todas as Contas:** Lista todas as contas cadastradas no sistema.
-3. **Consultar uma Conta pelo número:** Encontra uma conta pelo número.
-4. **Consultar uma Conta pelo titular:** Encontra uma ou mais contas associadas ao nome do titular.
-5. **Editar Conta:** Permite atualizar os dados de uma conta existente a partir do número da conta.
-6. **Excluir Conta:** Remove uma conta específica com base no número da conta.
-7. **Sacar:** Realiza a retirada de um valor de uma conta, desde que o saldo seja suficiente.
-8. **Depositar:** Adiciona um valor ao saldo de uma conta existente.
-9. **Transferir:** Transfere um valor de uma conta para outra, respeitando os respectivos saldos e limites.
-
-<br />
-
-## 3. Diagrama de Classes
-
-<br />
-
-Um **Diagrama de Classes** é um modelo visual usado na programação orientada a objetos para representar a estrutura de um sistema. Ele exibe classes, atributos, métodos e os relacionamentos entre elas, como associações, heranças e dependências.
-
-Esse diagrama ajuda a planejar e entender a arquitetura do sistema, mostrando como os componentes interagem e se conectam. É amplamente utilizado nas fases de design e documentação de projetos.
-
-Abaixo, você confere o Diagrama de Classes do Projeto Conta Bancária:
+Visualize a estrutura do sistema com herança e polimorfismo aplicados 👇
 
 ```mermaid
 classDiagram
@@ -76,44 +59,29 @@ class Conta {
   - tipo: int
   - titular: String
   - saldo: float
-  + get numero() int
-  + get agencia() int
-  + get tipo() int
-  + get titular() String
-  + get saldo() float
-  + set numero(numero: int) void
-  + set agencia(agencia: int) void
-  + set tipo(tipo: int) void
-  + set titular(titular: String) void
-  + set saldo(saldo: float) void
-  + sacar(valor: float) boolean
-  + depositar(valor: float) void
-  + visualizar() void
+  + get/set atributos
+  + sacar(valor: float): boolean
+  + depositar(valor: float): void
+  + visualizar(): void
 }
 class ContaCorrente {
   - limite: float
-  + get limite() float
-  + set limite(limite: float) void
-  + sacar(valor: float) boolean
-  + visualizar() void
+  + get/set limite()
+  + sacar(valor: float): boolean
+  + visualizar(): void
 }
 class ContaPoupanca {
   - aniversario: int
-  + get aniversario() int
-  + set aniversario(aniversario: int) void
-  + visualizar() void
+  + get/set aniversario()
+  + visualizar(): void
 }
 ContaCorrente --> Conta
 ContaPoupanca --> Conta
 ```
 
-<br />
+---
 
-## 4. Tela Inicial do Sistema - Menu
-
-
-
-<br />
+## 🖥️ Tela Inicial do Sistema
 
 <p align="center">
   <a href="https://github.com/user-attachments/assets/71017d7a-225a-40b9-b912-679392a83ba1">
@@ -121,67 +89,72 @@ ContaPoupanca --> Conta
   </a>
 </p>
 
-<br />
+---
 
-## 5. Requisitos
+## 📚 O que aprendi com este projeto
 
-<br />
+Este projeto foi essencial para consolidar meus conhecimentos em Java 💻. Aprendi a:
 
-Para executar os códigos localmente, você precisará de:
+- ✨ Aplicar os princípios da Programação Orientada a Objetos;
+- 🔄 Criar estruturas de controle (if, switch, loops);
+- 🧮 Trabalhar com arrays e collections;
+- ❗ Tratar exceções corretamente;
+- 🧩 Utilizar interfaces, lambdas e streams para tornar o código mais flexível e funcional.
+
+---
+
+## 🧗‍♂️ Desafios Enfrentados
+
+Durante o desenvolvimento, enfrentei alguns obstáculos importantes, como:
+
+- 🔍 Entender e aplicar **herança e polimorfismo** corretamente;
+- 🧠 Estruturar um menu de forma simples, sem criar métodos separados;
+- 🔒 Garantir a segurança das operações (como saques e transferências);
+- 🧰 Organizar o código para que fosse **legível e reutilizável**.
+
+Cada desafio foi uma oportunidade de aprendizado prático! 🚀
+
+---
+
+## 🛠️ Requisitos
 
 - [Java JDK 17+](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-- [Eclipse](https://eclipseide.org/) ou [STS](https://spring.io/tools)
+- [Eclipse IDE](https://eclipseide.org/) ou [Spring Tool Suite](https://spring.io/tools)
 
-<br />
+---
 
-## 6. Como Executar o projeto no Eclipse/STS
+## 🧪 Como executar
 
-<br />
-
-### 6.1. Importando o Projeto
-
-1. Clone o repositório do Projeto [Conta Bancária](https://github.com/rafaelq80/conta_bancaria_t82) dentro da pasta do *Workspace* do Eclipse/STS
+### 1️⃣ Importar
 
 ```bash
 git clone https://github.com/rafaelq80/conta_bancaria_t82.git
 ```
 
-2. **Abra o Eclipse/STS** e selecione a pasta do *Workspace* onde você clonou o repositório do projeto
-3. No menu superior do Eclipse/STS, clique na opção: **File 🡲 Import...**
-4. Na janela **Import**, selecione a opção: **General 🡲 Existing Projects into Workspace** e clique no botão **Next**
-5. Na janela **Import Projects**, no item **Select root directory**, clique no botão **Browse...** e selecione a pasta do Workspace onde você clonou o repositório do projeto
-6. O Eclipse/STS reconhecerá automaticamente o projeto
-7. Marque o Projeto Conta Bancária no item **Projects** e clique no botão **Finish** para concluir a importação
+- File → Import → General → Existing Projects into Workspace
+- Browse até a pasta clonada
+- Finalize com **Finish**
 
-<br />
+### 2️⃣ Rodar
 
-### 6.2. Executando o projeto
+- Abra a classe `Menu`
+- Clique em ▶️ **Run**
+- Use o console para interagir com o menu do sistema
 
-1. Na guia **Package Explorer**, localize o Projeto Conta Bancária
-2. Abra a **Classe Menu**
-3. Clique no botão **Run** <img src="https://i.imgur.com/MtBQjUp.png" title="source: imgur.com" width="3%"/> para executar a aplicação
-4. Caso seja perguntado qual é o tipo do projeto, selecione a opção **Java Application**
-5. O console exibirá o menu do Projeto.
+---
 
-<br />
+## 🤝 Contribuição
 
-## 7. Contribuição
+Este repositório é um projeto educacional, mas qualquer colaboração é muito bem-vinda! ✨
 
-<br />
+- Crie uma **issue**
+- Envie um **pull request**
+- Compartilhe com quem está aprendendo Java!
 
-Este repositório é parte de um projeto educacional, mas contribuições são sempre bem-vindas! Caso tenha sugestões, correções ou melhorias, fique à vontade para:
+---
 
-- Criar uma **issue**
-- Enviar um **pull request**
-- Compartilhar com colegas que estejam aprendendo Java!
-
-<br />
-
-##  8. Contato
-
-<br />
+## 📬 Contato
 
 Desenvolvido por [**Thiago Tasseli**](https://github.com/tasselii)
-Para dúvidas, sugestões ou colaborações, entre em contato via GitHub ou abra uma issue!
 
-<br />
+Fique à vontade para tirar dúvidas, dar sugestões ou contribuir! 😄
