@@ -111,11 +111,13 @@ ContaPoupanca --> Conta
 
 ## 4. Tela Inicial do Sistema - Menu
 
+
+
 <br />
 
 <p align="center">
-  <a href="https://github.com/user-attachments/assets/eb80b225-c420-49be-88b4-7e9827c24d7f">
-    <img src="https://github.com/user-attachments/assets/eb80b225-c420-49be-88b4-7e9827c24d7f" alt="Imagem centralizada" />
+  <a href="https://github.com/user-attachments/assets/71017d7a-225a-40b9-b912-679392a83ba1">
+    <img src="https://github.com/user-attachments/assets/71017d7a-225a-40b9-b912-679392a83ba1" alt="Imagem centralizada" />
   </a>
 </p>
 
