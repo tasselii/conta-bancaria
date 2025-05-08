@@ -82,14 +82,16 @@ public abstract class Conta {
 		
 		if (this.saldo >= valor) {
 	        this.saldo -= valor; 
-	        System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND + "╔══════════════════════════════════════╗");
-	        System.out.println(Cores.TEXT_CYAN + "║" + Cores.TEXT_GREEN + "             Saque realizado " + Cores.TEXT_CYAN + "         ║");
-	        System.out.println("╚══════════════════════════════════════╝");
+	        System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND+"\n");
+	        System.out.println("╔══════════════════════════════════════╗");
+	        System.out.println("║" + Cores.TEXT_GREEN + Cores.ANSI_BLACK_BACKGROUND + "           Saque realizado           " + Cores.TEXT_CYAN + "║");
+	        System.out.println("╚══════════════════════════════════════╝" + Cores.TEXT_RESET);
 	        return true; 
 	    }
-		System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND + "╔══════════════════════════════════════╗");
-        System.out.println(Cores.TEXT_CYAN + "║" + Cores.TEXT_RED + "        O saldo é insuficiente " + Cores.TEXT_CYAN + "       ║");
-        System.out.println("╚══════════════════════════════════════╝");
+		System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND+"\n");
+        System.out.println("╔══════════════════════════════════════╗");
+        System.out.println("║" + Cores.TEXT_RED + Cores.ANSI_BLACK_BACKGROUND + "           O saldo é insuficiente           " + Cores.TEXT_CYAN + "║");
+        System.out.println("╚══════════════════════════════════════╝" + Cores.TEXT_RESET);
 		return false;
 	}
 	
@@ -128,9 +130,9 @@ public abstract class Conta {
 	    System.out.println("║          📋 " + Cores.TEXT_WHITE + "DADOS DA CONTA" + Cores.TEXT_CYAN + "           ║");
 	    System.out.println("╠══════════════════════════════════════╣");
 	    System.out.println("║" + Cores.TEXT_WHITE + " Número da Conta: " + Cores.TEXT_YELLOW + String.format("%-20s", this.numero)  + Cores.TEXT_CYAN + "║");
-	    System.out.println("║" + Cores.TEXT_WHITE + " Agência:         " + Cores.TEXT_YELLOW + String.format("%-20s", this.agencia) + Cores.TEXT_CYAN + "║");
-	    System.out.println("║" + Cores.TEXT_WHITE + " Tipo de Conta:   " + Cores.TEXT_YELLOW + String.format("%-20s", tipoStr)    + Cores.TEXT_CYAN + "║");
 	    System.out.println("║" + Cores.TEXT_WHITE + " Titular:         " + Cores.TEXT_YELLOW + String.format("%-20s", this.titular)  + Cores.TEXT_CYAN + "║");
+	    System.out.println("║" + Cores.TEXT_WHITE + " Tipo de Conta:   " + Cores.TEXT_YELLOW + String.format("%-20s", tipoStr)    + Cores.TEXT_CYAN + "║");
+	    System.out.println("║" + Cores.TEXT_WHITE + " Agência:         " + Cores.TEXT_YELLOW + String.format("%-20s", this.agencia) + Cores.TEXT_CYAN + "║");
 	    System.out.println("║" + Cores.TEXT_WHITE + " Saldo:           " + Cores.TEXT_YELLOW + String.format("%-25s", saldoFormatado) + Cores.TEXT_CYAN + "║");
 
 	    // Inclui a linha do limite se houver (para conta corrente)

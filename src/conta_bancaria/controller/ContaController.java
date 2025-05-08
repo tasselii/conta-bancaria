@@ -2,11 +2,13 @@ package conta_bancaria.controller;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.List;
+
 import conta_bancaria.model.Conta;
 import conta_bancaria.repository.ContaRepository;
+import conta_bancaria.util.Cores;
 
 public class ContaController implements ContaRepository{
 
@@ -47,7 +49,7 @@ public class ContaController implements ContaRepository{
 	@Override
 	public void cadastrar(Conta conta) {
 		listaContas.add(conta);
-		System.out.println("A Conta foi criada com sucesso! ✅"); 
+		System.out.println(Cores.TEXT_GREEN+"\nA Conta foi criada com sucesso! ✅"); 
 	}
 
 	@Override
@@ -56,13 +58,12 @@ public class ContaController implements ContaRepository{
 		
 		if(buscaConta.isPresent()) {
 			listaContas.set(listaContas.indexOf(buscaConta.get()), conta);
-			System.out.println("Dados Anteriores");
+			System.out.println(Cores.TEXT_RED+"\nDados Anteriores:");
 			buscaConta.get().visualizar();
-			System.out.println("Dados Atualizados");
+			System.out.println(Cores.TEXT_GREEN+"\nDados Atualizados:");
 			procurarPorNumero(buscaConta.get().getNumero());
-			System.out.printf("\nA Conta número %d foi atualizada com sucesso!", conta.getNumero());
-		}else
-			System.out.printf("\nA Conta %d não foi encontrado", conta.getNumero());
+			System.out.printf(Cores.TEXT_GREEN+"\nA Conta número %d foi atualizada com sucesso!", conta.getNumero());
+		}
 	}
 
 	@Override
@@ -71,9 +72,9 @@ public class ContaController implements ContaRepository{
 		
 		if(conta.isPresent()) {
 			if(listaContas.remove(conta.get()) == true) 
-				System.out.printf("\nA Conta numero %d foi excluída com sucesso!", numero); 
+				System.out.printf(Cores.TEXT_GREEN+"\nA Conta numero %d foi excluída com sucesso!", numero); 
 		}else
-				System.out.printf("\nA Conta %d não foi encontrado", numero);
+				System.out.printf(Cores.TEXT_RED+"\nA Conta %d não foi encontrado", numero);
 	}
 	
 
@@ -86,10 +87,10 @@ public class ContaController implements ContaRepository{
 		
 		if(conta.isPresent()) {
 			if(conta.get().sacar(valor) == true) {
-				System.out.printf("\nO Saque no valor de %s, foi efetuado com sucesso na conta número %d",nfMoeda.format(valor), numero);
+				System.out.printf(Cores.TEXT_GREEN+"\nO Saque no valor de %s\nfoi efetuado com sucesso na conta número %d",nfMoeda.format(valor), numero);
 			}
 		}else 
-			System.out.printf("\nA Conta %d não foi encontrado", numero);
+			System.out.printf(Cores.TEXT_RED+"\nA Conta %d não foi encontrado", numero);
 	}
 
 	@Override
@@ -99,9 +100,9 @@ public class ContaController implements ContaRepository{
 		
 		if(conta.isPresent()) {
 			conta.get().depositar(valor);
-			System.out.printf("\nO Depósito no valor de R$ %.2f, foi efetuado com sucesso na conta número %d",valor, numero);
+			System.out.printf(Cores.TEXT_GREEN+"\nO Depósito no valor de R$ %.2f\nfoi efetuado com sucesso na conta número %d",valor, numero);
 		}else
-			System.out.printf("\nA Conta %d não foi encontrado", numero);
+			System.out.printf(Cores.TEXT_RED+"\nA Conta %d não foi encontrado", numero);
 	}
 
 	@Override
@@ -112,10 +113,10 @@ public class ContaController implements ContaRepository{
 		if(contaOrigem.isPresent() && contaDestino.isPresent()) {
 			if(contaOrigem.get().sacar(valor) == true) {
 			contaDestino.get().depositar(valor);
-			System.out.printf("\nA tranferência no valor de R$ %.2f, da conta número %d para Conta número %d foi efetuada com sucesso!",valor, numeroOrigem, numeroDestino);
+			System.out.printf(Cores.TEXT_GREEN+"\nA tranferência no valor de R$ %.2f da conta \nnúmero %d para Conta número %d foi efetuada com sucesso!",valor, numeroOrigem, numeroDestino);
 			}
 		}else
-			System.out.printf("\nA Conta %d não foi encontrado", numero);
+			System.out.printf(Cores.TEXT_RED+"\nA Conta %d não foi encontrado", numero);
 		
 	}
 	
@@ -126,12 +127,9 @@ public class ContaController implements ContaRepository{
 	}
 
 	public Optional<Conta> buscarNaCollection(int numero) {
-		for (var conta : listaContas) {
-			if(conta.getNumero() == numero)
-				return Optional.of(conta);
-		}
-		return Optional.empty();
+	    return listaContas.stream()
+	                      .filter(conta -> conta.getNumero() == numero)
+	                      .findFirst();
 	}
-
 
 }

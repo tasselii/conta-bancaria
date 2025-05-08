@@ -27,17 +27,16 @@ public class ContaCorrente extends Conta {
 		if ((this.getSaldo() + this.limite) >= valor) {
 			this.setSaldo(this.getSaldo() - valor);
 
-			System.out.println(
-					Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND + "╔══════════════════════════════════════╗");
-			System.out.println(Cores.TEXT_CYAN + "║" + Cores.TEXT_GREEN + "             Saque realizado "
-					+ Cores.TEXT_CYAN + "         ║");
-			System.out.println("╚══════════════════════════════════════╝");
+			System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND);
+	        System.out.println("╔══════════════════════════════════════╗");
+	        System.out.println("║" + Cores.TEXT_GREEN + Cores.ANSI_BLACK_BACKGROUND + "           Saque realizado            " + Cores.TEXT_CYAN + "║");
+	        System.out.println("╚══════════════════════════════════════╝" + Cores.TEXT_RESET);
 			return true;
 		}
-		System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND + "╔══════════════════════════════════════╗");
-		System.out.println(Cores.TEXT_CYAN + "║" + Cores.TEXT_RED + "        O saldo é insuficiente " + Cores.TEXT_CYAN
-				+ "       ║");
-		System.out.println("╚══════════════════════════════════════╝");
+		System.out.println(Cores.TEXT_CYAN + Cores.ANSI_BLACK_BACKGROUND);
+        System.out.println("╔══════════════════════════════════════╗");
+        System.out.println("║" + Cores.TEXT_RED + Cores.ANSI_BLACK_BACKGROUND + "       O saldo é insuficiente         " + Cores.TEXT_CYAN + "║");
+        System.out.println("╚══════════════════════════════════════╝" + Cores.TEXT_RESET);
 		return false;
 	}
 
